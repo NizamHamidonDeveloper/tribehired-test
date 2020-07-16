@@ -1,0 +1,58 @@
+<div *ngIf="!detailStatus">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">User ID</th>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Body</th>
+            </tr>
+            <tr *ngFor="let item of post; let i=index;" (click)="selectNo(item)">
+                <td>{{ item.userId }}</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.body }}</td>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+<div *ngIf="detailStatus">
+    <div class="card">
+        <div class="container">
+            <h4>
+                <b>{{ postDetail.title }}</b>
+            </h4>
+            <p>{{ postDetail.body }}</p>
+        </div>
+    </div>
+    <br>
+    <div *ngFor="let item of comment">
+        <div class="card">
+            <div class="container">
+                <h4>
+                    <b>{{ item.name }}</b>
+                    <br>
+                    <b>{{ item.email }}</b>
+                </h4>
+                <p>{{ item.body }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        width: 40%;
+    }
+
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+        padding: 2px 16px;
+    }
+</style>
